@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">AppEjemploMascotas</string>
     <string name="TituloApp">LoVet</string>
+    <string name="Campo_Nombre">Ingrese su nombre</string>
+    <string name="Campo_apellido">Ingrese su apellido</string>
+    <string name="campo_tipo_documento">Ingrese el tipo de documento</string>
+    <string name="campo_numero_documento">Ingrese el número de documento</string>
+    <string name="campo_email">Ingrese el email</string>
+    <string name="campo_celular">Ingrese el número celular</string>
+    <string name="boton_registrar_usuario">Registrar</string>
+    <string name="campo_nombre_mascota">Ingrese el nombre de su mascota</string>
+    <string name="campo_edad_mascota">Ingrese la edad de su mascota</string>
 </resources>

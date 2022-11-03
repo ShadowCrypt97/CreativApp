@@ -11,10 +11,5 @@ class LoginActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        relativeLayout = findViewById(R.id.main_container)
-        animationDrawable = relativeLayout.background as AnimationDrawable
-        animationDrawable.setEnterFadeDuration(4000)
-        animationDrawable.setExitFadeDuration(4000)
-        animationDrawable.start()
     }
 }
