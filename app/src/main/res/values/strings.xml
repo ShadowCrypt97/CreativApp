@@ -10,4 +10,8 @@
     <string name="boton_registrar_usuario">Registrar</string>
     <string name="campo_nombre_mascota">Ingrese el nombre de su mascota</string>
     <string name="campo_edad_mascota">Ingrese la edad de su mascota</string>
+    <string name="content_description_lottie_animation">Animación de un perro saliendo de una taza tipo mug</string>
+    <string name="logo_app_descritption">logo de Nativ App</string>
+    <string name="TituloRegistrarUsuario">Registro Usuario</string>
+    <string name="TituloRegistrarMascota">Registro Mascota</string>
 </resources>

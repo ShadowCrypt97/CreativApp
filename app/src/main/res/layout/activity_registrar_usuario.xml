@@ -7,6 +7,20 @@
     android:background="@drawable/background"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/registrarUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/TituloRegistrarUsuario"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="413dp"
@@ -15,64 +29,16 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_removebg_preview" />
-
-    <TextView
-        android:id="@+id/nombreMascota"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:fontFamily="sans-serif-medium"
-        android:hint="@string/Campo_Nombre"
-        android:padding="10dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <TextView
-        android:id="@+id/tipoMascota"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif-medium"
-        android:hint="@string/Campo_apellido"
-        android:padding="10dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreMascota" />
-
-    <TextView
-        android:id="@+id/edadMascota"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif-medium"
-        android:hint="@string/campo_tipo_documento"
-        android:padding="10dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tipoMascota" />
+        app:srcCompat="@mipmap/ic_nativ_app_foreground" />
 
     <TextView
         android:id="@+id/numeroCelular"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/redondear_bordes_campos"
         android:fontFamily="sans-serif-medium"
-        android:hint="@string/campo_tipo_documento"
+        android:hint="@string/campo_celular"
         android:padding="10dp"
         android:textAlignment="viewStart"
         android:textColor="@color/white"
@@ -87,7 +53,8 @@
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/redondear_bordes_campos"
         android:fontFamily="sans-serif-medium"
         android:hint="@string/campo_email"
         android:padding="10dp"
@@ -96,7 +63,7 @@
         android:textColorHint="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numeroDocumento" />
 
@@ -104,7 +71,8 @@
         android:id="@+id/numeroDocumento"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/redondear_bordes_campos"
         android:fontFamily="sans-serif-medium"
         android:hint="@string/campo_numero_documento"
         android:padding="10dp"
@@ -113,9 +81,9 @@
         android:textColorHint="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edadMascota" />
+        app:layout_constraintTop_toBottomOf="@+id/tipoDocumento" />
 
     <Button
         android:id="@+id/registarMascota"
@@ -124,9 +92,61 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="29dp"
         android:text="@string/boton_registrar_usuario"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numeroCelular" />
+
+    <TextView
+        android:id="@+id/nombreUsuario"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/redondear_bordes_campos"
+        android:padding="10dp"
+        android:text="@string/Campo_Nombre"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registrarUsuario" />
+
+    <TextView
+        android:id="@+id/nombreApellido"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/redondear_bordes_campos"
+        android:padding="10dp"
+        android:text="@string/Campo_apellido"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreUsuario" />
+
+    <TextView
+        android:id="@+id/tipoDocumento"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/redondear_bordes_campos"
+        android:padding="10dp"
+        android:text="@string/campo_tipo_documento"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreApellido" />
 </androidx.constraintlayout.widget.ConstraintLayout>
