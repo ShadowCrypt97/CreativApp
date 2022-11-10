@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app">dropDownTipoMascota</string>
+    <string name="dropDownTipoMascota">dropDownTipoMascota</string>
     <string-array name="tipoMascotas">
         <item>Perro</item>
         <item>Gato</item>
