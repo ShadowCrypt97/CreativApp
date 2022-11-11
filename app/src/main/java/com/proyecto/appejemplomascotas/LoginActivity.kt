@@ -16,6 +16,7 @@ class LoginActivity: Activity() {
     lateinit var binding: ActivityLoginBinding //Manejar los elementos de la vista
     lateinit var btn_registro:Button
     lateinit var btn_login:Button
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)

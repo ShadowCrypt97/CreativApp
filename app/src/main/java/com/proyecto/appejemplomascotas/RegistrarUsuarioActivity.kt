@@ -46,13 +46,10 @@ class RegistrarUsuarioActivity: Activity(){
         if(numDoc.isNotEmpty() && contrasenha.isNotEmpty()){
             Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
             editar.apply()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,RegistrarMascotaActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar número de identificación y contraseña",Toast.LENGTH_SHORT).show()
         }
-
-
-
     }
 
 }

@@ -14,11 +14,12 @@
     <string name="logo_app_descritption">logo de Nativ App</string>
     <string name="TituloRegistrarUsuario">Registro Usuario</string>
     <string name="TituloRegistrarMascota">Registro Mascota</string>
-    <string name="login_nombre_usuario">Ingrese su nombre de usuario</string>
+    <string name="login_nombre_usuario">Ingrese su número de documento</string>
     <string name="login_contrasenha">Ingrese su contraseña</string>
     <string name="TituloInicioSesion">Iniciar Sesión</string>
     <string name="boton_inicio_sesion">Iniciar Sesión</string>
     <string name="link_recuperar_contrasena">Olvidaste tu contraseña?</string>
     <string name="boton_login_registrarse">Registrate</string>
     <string name="campo_contrasena">Ingrese su contraseña</string>
+    <string name="boton_registrar_mascota">Registrar Mascota</string>
 </resources>
