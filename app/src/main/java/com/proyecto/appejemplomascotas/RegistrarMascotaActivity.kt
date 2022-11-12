@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.core.view.get
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 
 class RegistrarMascotaActivity: Activity() {
@@ -38,7 +37,7 @@ class RegistrarMascotaActivity: Activity() {
         editar.putInt("edad", edad)
         editar.putString("tipoBanio",tipoBanio)
 
-        if(nombreMascota.isNotEmpty() && tipoMascota.isNotEmpty()){
+        if(nombreMascota.isNotEmpty() && tipoMascota != "Seleccione el tipo de mascota" && tipoBanio !="Seleccione el tipo de baño"){
             Toast.makeText(this,"Mascota registrada exitosamente", Toast.LENGTH_SHORT).show()
             editar.apply()
             startActivity(Intent(this,LoginActivity::class.java))

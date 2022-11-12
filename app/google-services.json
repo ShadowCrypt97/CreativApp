@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "295094608172",
+    "project_id": "nativapp-77d14",
+    "storage_bucket": "nativapp-77d14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295094608172:android:c6509a0c686b5704174c89",
+        "android_client_info": {
+          "package_name": "com.proyecto.appejemplomascotas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295094608172-di8u8942r5d7rajd1ioja0j868utvd3j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyecto.appejemplomascotas",
+            "certificate_hash": "8bb105d5ae6211008ebcedc48357f7b46bb05961"
+          }
+        },
+        {
+          "client_id": "295094608172-gulv2jorpntjsmng4lphtgm20o4nvavn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbcidhs43gll4-avz0-x7r-q8WLJWUyxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295094608172-gulv2jorpntjsmng4lphtgm20o4nvavn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

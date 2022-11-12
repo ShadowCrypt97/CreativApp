@@ -38,9 +38,9 @@ class LoginActivity: Activity() {
         val usuario:String = binding.loginNombreUsuario.text.toString()
         val password:String = binding.loginIngresarContrasenha.text.toString()
 
-        var preferences = getSharedPreferences(usuario,Context.MODE_PRIVATE)
-        var documentoAlmacenado = preferences.all.get("numeroDocumento")
-        var passwordAlmacenada = preferences.getString("contraseña",password).orEmpty()
+        val preferences = getSharedPreferences(usuario,Context.MODE_PRIVATE)
+        val documentoAlmacenado = preferences.all.get("numeroDocumento")
+        val passwordAlmacenada = preferences.getString("contraseña",password).orEmpty()
 
         if (documentoAlmacenado == usuario && passwordAlmacenada == password)
             Toast.makeText(this,"Bienvenido $usuario", Toast.LENGTH_SHORT).show()
