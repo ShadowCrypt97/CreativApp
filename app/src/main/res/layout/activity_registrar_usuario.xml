@@ -96,7 +96,7 @@
             android:textColorHint="@color/white"
             android:textSize="16sp" />
 
-        <EditText
+        <RelativeLayout
             android:id="@+id/tipoID"
             android:layout_width="300dp"
             android:layout_height="30dp"
@@ -107,13 +107,32 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="51dp"
             android:background="@drawable/redondear_bordes_campos"
-            android:hint="@string/campo_tipo_documento"
-            android:padding="0dp"
-            android:paddingStart="10dp"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/img_flecha_spinner" />
+
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/numID"
