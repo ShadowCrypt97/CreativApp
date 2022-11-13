@@ -20,7 +20,7 @@ class RegistrarUsuarioActivity: Activity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val listaTipoDoc = arrayOf("Seleccione tipo de documento", "Cédula", "Tarjeta de identidad", "NIT", "Pasaporte")
-        var adaptador:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoDoc)
+        val adaptador:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoDoc)
         binding = ActivityRegistrarUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adaptador.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -41,8 +41,8 @@ class RegistrarUsuarioActivity: Activity(){
         val contrasenha:String = binding.registroPassword.text.toString()
 
 
-        var preferences = getSharedPreferences(numDoc, Context.MODE_PRIVATE)
-        var editar = preferences.edit()
+        val preferences = getSharedPreferences(numDoc, Context.MODE_PRIVATE)
+        val editar = preferences.edit()
 
         editar.putString("nombre", nombre)
         editar.putString("apellido", apellido)

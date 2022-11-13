@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.core.view.get
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 
 class RegistrarMascotaActivity: Activity() {
@@ -23,8 +22,8 @@ class RegistrarMascotaActivity: Activity() {
         super.onCreate(savedInstanceState)
         val listaTipoMascota = arrayOf("Seleccione tipo de mascota", "Perro", "Gato")
         val listaTipoBanho = arrayOf("Seleccione tipo de baño", "Medicado", "Completo", "Antipulgas")
-        var adaptadorMascota: ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoMascota)
-        var adaptadorTipoBanho:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoBanho)
+        val adaptadorMascota: ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoMascota)
+        val adaptadorTipoBanho:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoBanho)
         binding = ActivityRegistrarMascotaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adaptadorMascota.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -62,8 +61,8 @@ class RegistrarMascotaActivity: Activity() {
         val nombreMascota:String = binding.nombreMascota.text.toString()
         val edad:Int = Integer.parseInt(binding.edadMascota.text.toString())
 
-        var preferences = getSharedPreferences(nombreMascota, Context.MODE_PRIVATE)
-        var editar = preferences.edit()
+        val preferences = getSharedPreferences(nombreMascota, Context.MODE_PRIVATE)
+        val editar = preferences.edit()
 
         editar.putString("nombreMascota", nombreMascota)
         editar.putString("tipoMascota", campoTipoMascota.selectedItem.toString())
