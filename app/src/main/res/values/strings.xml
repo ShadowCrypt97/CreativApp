@@ -22,4 +22,7 @@
     <string name="boton_login_registrarse">Registrate</string>
     <string name="campo_contrasena">Ingrese su contraseña</string>
     <string name="boton_registrar_mascota">Registrar Mascota</string>
+    <string name="recover_campo_email">Ingrese su correo electrónico</string>
+    <string name="TituloRecoverPass">Recuperar contraseña</string>
+    <string name="button_recover_pass">Enviar</string>
 </resources>
