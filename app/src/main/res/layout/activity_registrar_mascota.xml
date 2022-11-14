@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_registro_pet"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/ic_nativ_app_foreground" />
+
+        <EditText
+            android:id="@+id/nombreMascota"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/registrarMascota"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="51dp"
+            android:background="@drawable/redondear_bordes_campos"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/campo_nombre_mascota"
+            android:paddingStart="10dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registrarMascota" />
+
+        <EditText
+            android:id="@+id/edadMascota"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tipoMascota"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="51dp"
+            android:background="@drawable/redondear_bordes_campos"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/campo_edad_mascota"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tipoMascota" />
+
+        <Button
+            android:id="@+id/registarMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tipoBanho"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="29dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="@string/boton_registrar_mascota"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tipoBanho" />
+
+        <RelativeLayout
+            android:id="@+id/tipoMascota"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/nombreMascota"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="51dp"
+            android:background="@drawable/redondear_bordes_campos"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/dropdownTipoMascota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/img_flecha_spinner" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tipoBanho"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/edadMascota"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="51dp"
+            android:background="@drawable/redondear_bordes_campos"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/dropdownTipoBanho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/img_flecha_spinner" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/registrarMascota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo_registro_pet"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="55dp"
+            android:fontFamily="@font/ubuntu_bold"
+            android:text="@string/TituloRegistrarMascota"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_registro_pet" />
+
+
+
+    </RelativeLayout>
+</layout>
