@@ -45,8 +45,10 @@ class LoginActivity: Activity() {
         val documentoAlmacenado = preferences.all.get("numeroDocumento")
         val passwordAlmacenada = preferences.getString("contraseña",password).orEmpty()
 
-        if (documentoAlmacenado == usuario && passwordAlmacenada == password)
+        if (documentoAlmacenado == usuario && passwordAlmacenada == password) {
             Toast.makeText(this,"Bienvenido $usuario", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
         else
             Toast.makeText(this,"Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
     }
