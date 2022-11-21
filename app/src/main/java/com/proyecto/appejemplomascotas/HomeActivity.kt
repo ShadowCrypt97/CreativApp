@@ -1,6 +1,5 @@
 package com.proyecto.appejemplomascotas
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -45,7 +44,7 @@ class HomeActivity: AppCompatActivity() {
     }
     private fun menuInferior(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply{
-            replace(R.id.fragment_container_view, fragment)
+            replace(R.id.fragment_container, fragment)
             commit()
         }
     }
