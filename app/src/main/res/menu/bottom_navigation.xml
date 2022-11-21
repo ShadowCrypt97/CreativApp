@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id = "@+id/mascotas"
+        android:title="@string/TituloMisMascotas"
+        android:icon="@drawable/mascotas"
+        />
+    <item
+        android:id = "@+id/veterinarios"
+        android:title="@string/TituloVetes"
+        android:icon="@drawable/veterinarios"
+        />
+    <item
+        android:id = "@+id/agendar_baths"
+        android:title="@string/TituloAgendarBath"
+        android:icon="@drawable/baths"
+        />
+    <item
+        android:id = "@+id/my_baths"
+        android:title="@string/TituloMisBaños"
+        android:icon="@drawable/my_baths"
+        />
+</menu>
