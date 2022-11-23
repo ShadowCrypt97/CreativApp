@@ -25,3 +25,9 @@ q
 Aapp/src/main/java/com/proyecto/appejemplomascotas/MainActivity.kt,a\f\af34f4c88ba66fa80ef85803a2463711adb13cfb
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+p
+@app/src/main/java/com/proyecto/appejemplomascotas/Veterinario.kt,0\3\0314aecdbe8580b17e6850427c2bf6a253ef5523
+
+Oapp/src/main/java/com/proyecto/appejemplomascotas/RecyclerVeterinarioAdapter.kt,5\c\5c06cb967ce19a26df7d86e6e2dadd8f62163aa4
+y
+Iapp/src/main/java/com/proyecto/appejemplomascotas/VeterinariosFragment.kt,0\4\04e6666e172a7a3899a1e42b607d726d51e2d49a

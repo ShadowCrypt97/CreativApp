@@ -46,7 +46,6 @@ class LoginActivity: Activity() {
         val passwordAlmacenada = preferences.getString("contraseña",null).orEmpty()
 
         if (emailAlmacenado == usuario && passwordAlmacenada == password) {
-            Toast.makeText(this,"Bienvenido $usuario", Toast.LENGTH_SHORT).show()
             var intent = Intent(this,HomeActivity::class.java)
             intent.putExtra("email",usuario)
             startActivity(intent)

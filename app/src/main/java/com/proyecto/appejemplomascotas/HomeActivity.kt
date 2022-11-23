@@ -1,6 +1,7 @@
 package com.proyecto.appejemplomascotas
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.proyecto.appejemplomascotas.databinding.ActivityHomeBinding
@@ -19,7 +20,11 @@ class HomeActivity: AppCompatActivity() {
         val veterinariosFragment = VeterinariosFragment()
         val myBathsFragment = MyBathsFragment()
         val agendarBathsFragment = AgendarBathsFragment()
-
+        val email = intent.getStringExtra("email")
+        Toast.makeText(this,"Bienvenido $email", Toast.LENGTH_LONG).show()
+        val bundle = Bundle()
+        bundle.putString("email",email)
+        mascotasFragment.arguments = bundle
         navigation.setOnItemSelectedListener{
             when(it.itemId){
                 R.id.mascotas -> {

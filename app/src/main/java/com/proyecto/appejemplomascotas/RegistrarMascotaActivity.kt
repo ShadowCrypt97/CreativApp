@@ -25,6 +25,9 @@ class RegistrarMascotaActivity: Activity() {
         val listaTipoBanho = arrayOf("Seleccione tipo de baño", "Medicado", "Completo", "Antipulgas")
         val adaptadorMascota: ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoMascota)
         val adaptadorTipoBanho:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoBanho)
+        val email = intent.getStringExtra("email")
+        Toast.makeText(this,"Bienvenido $email", Toast.LENGTH_SHORT).show()
+
         binding = ActivityRegistrarMascotaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         adaptadorMascota.setDropDownViewResource(R.layout.spinner_dropdown_item)
