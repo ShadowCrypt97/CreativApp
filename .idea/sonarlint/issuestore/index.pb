@@ -22,10 +22,10 @@ H
 r
 Bapp/src/main/java/com/proyecto/appejemplomascotas/LoginActivity.kt,1\7\17d131a39d22acdbc2000d21d24d7aaaffbc4f81
 y
-Iapp/src/main/java/com/proyecto/appejemplomascotas/VeterinariosFragment.kt,0\4\04e6666e172a7a3899a1e42b607d726d51e2d49a
-y
 Iapp/src/main/java/com/proyecto/appejemplomascotas/AgendarBathsFragment.kt,0\3\03a86d445efb02d1b67fe60a0c6261c89b9265ff
 t
 Dapp/src/main/java/com/proyecto/appejemplomascotas/MyBathsFragment.kt,2\1\21a76cc017dc508c977a5aa436782bf7bdb47a57
 q
 Aapp/src/main/java/com/proyecto/appejemplomascotas/MainActivity.kt,a\f\af34f4c88ba66fa80ef85803a2463711adb13cfb
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
