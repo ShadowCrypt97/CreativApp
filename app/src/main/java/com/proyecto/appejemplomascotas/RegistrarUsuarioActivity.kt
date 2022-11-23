@@ -41,7 +41,7 @@ class RegistrarUsuarioActivity: Activity(){
         val contrasenha:String = binding.registroPassword.text.toString()
 
 
-        val preferences = getSharedPreferences(numDoc, Context.MODE_PRIVATE)
+        val preferences = getSharedPreferences(email, Context.MODE_PRIVATE)
         val editar = preferences.edit()
 
         editar.putString("nombre", nombre)
@@ -64,10 +64,10 @@ class RegistrarUsuarioActivity: Activity(){
             }
         }
 
-        if(numDoc.isNotEmpty() && contrasenha.isNotEmpty()){
+        if(email.isNotEmpty() && contrasenha.isNotEmpty()){
             Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
             editar.apply()
-            startActivity(Intent(this,RegistrarMascotaActivity::class.java))
+            startActivity(Intent(this,LoginActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar número de identificación y contraseña",Toast.LENGTH_SHORT).show()
         }

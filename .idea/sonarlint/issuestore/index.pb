@@ -9,8 +9,6 @@ Dapp/src/test/java/com/proyecto/appejemplomascotas/ExampleUnitTest.kt,b\2\b2190
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-}
-Mapp/src/main/java/com/proyecto/appejemplomascotas/RegistrarUsuarioActivity.kt,7\5\75978f6e6de13e7eae85ae0caed1caa7bbabb211
 ~
 Napp/src/main/java/com/proyecto/appejemplomascotas/RecuperarPasswordActivity.kt,3\a\3a7f0b25f515fa45de3c4bf48ac947192192bc6d
 H
@@ -19,8 +17,6 @@ H
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-r
-Bapp/src/main/java/com/proyecto/appejemplomascotas/LoginActivity.kt,1\7\17d131a39d22acdbc2000d21d24d7aaaffbc4f81
 y
 Iapp/src/main/java/com/proyecto/appejemplomascotas/AgendarBathsFragment.kt,0\3\03a86d445efb02d1b67fe60a0c6261c89b9265ff
 t

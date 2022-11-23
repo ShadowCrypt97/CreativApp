@@ -42,12 +42,14 @@ class LoginActivity: Activity() {
         val password:String = binding.loginIngresarContrasenha.text.toString()
 
         val preferences = getSharedPreferences(usuario,Context.MODE_PRIVATE)
-        val documentoAlmacenado = preferences.all.get("numeroDocumento")
-        val passwordAlmacenada = preferences.getString("contraseña",password).orEmpty()
+        val emailAlmacenado = preferences.getString("email",null).orEmpty()
+        val passwordAlmacenada = preferences.getString("contraseña",null).orEmpty()
 
-        if (documentoAlmacenado == usuario && passwordAlmacenada == password) {
+        if (emailAlmacenado == usuario && passwordAlmacenada == password) {
             Toast.makeText(this,"Bienvenido $usuario", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this,HomeActivity::class.java))
+            var intent = Intent(this,HomeActivity::class.java)
+            intent.putExtra("email",usuario)
+            startActivity(intent)
         }
         else
             Toast.makeText(this,"Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()

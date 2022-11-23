@@ -74,7 +74,7 @@ class RegistrarMascotaActivity: Activity() {
         if(nombreMascota.isNotEmpty() && b1 && b2){
             Toast.makeText(this,"Mascota registrada exitosamente", Toast.LENGTH_SHORT).show()
             editar.apply()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,HomeActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
         }
