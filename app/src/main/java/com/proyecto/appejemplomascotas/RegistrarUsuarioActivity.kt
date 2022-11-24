@@ -12,6 +12,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
+import com.google.firebase.FirebaseApp
+import com.google.firebase.FirebaseCommonRegistrar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarUsuarioBinding
 import kotlinx.coroutines.launch
 
@@ -20,6 +25,7 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
     lateinit var binding: ActivityRegistrarUsuarioBinding
     lateinit var btn_registro:Button
     lateinit var campoTipoId:Spinner
+    lateinit var firebaseAuth:FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val listaTipoDoc = arrayOf("Seleccione tipo de documento", "Cédula", "Tarjeta de identidad", "NIT", "Pasaporte")
@@ -31,7 +37,8 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
         campoTipoId.adapter = adaptador
         btn_registro = binding.btnRegUsuario
         btn_registro.setOnClickListener{
-            registrarUsuario()
+            //registrarUsuario()
+            registrarFirebase()
         }
     }
 
@@ -88,6 +95,24 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
         }else{
             Toast.makeText(this," Favor completar número de identificación y contraseña",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun registrarFirebase(){
+        val email:String = binding.email.text.toString()
+        val contrasenha:String = binding.registroPassword.text.toString()
+        if(email.isEmpty()){
+            Toast.makeText(this,"Ingrese su correo electrónico",Toast.LENGTH_SHORT).show()
+        }else if (contrasenha.isEmpty()){
+            Toast.makeText(this,"Ingrese su contraseña",Toast.LENGTH_SHORT).show()
+        }else
+            firebaseAuth.createUserWithEmailAndPassword(email,contrasenha).addOnCompleteListener{
+                task ->
+                if (task.isSuccessful){
+                    Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,RegistrarMascotaActivity::class.java))
+                }else
+                    Toast.makeText(this,"Error al registrarse",Toast.LENGTH_SHORT).show()
+            }
     }
 
 }

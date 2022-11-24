@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.proyecto.appejemplomascotas.databinding.ActivityLoginBinding
 
 class LoginActivity: Activity() {
@@ -15,6 +16,8 @@ class LoginActivity: Activity() {
     lateinit var btn_registro:Button
     lateinit var btn_login:Button
     lateinit var link_recover_pass:TextView
+    lateinit var firebaseAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -28,7 +31,8 @@ class LoginActivity: Activity() {
             startActivity(Intent(this,RegistrarUsuarioActivity::class.java))
         }
         btn_login.setOnClickListener{
-            iniciarSesion()
+            //iniciarSesion()
+            validarFirebase()
         }
         link_recover_pass.setOnClickListener{
             startActivity(Intent(this,RecuperarPasswordActivity::class.java))
@@ -52,5 +56,19 @@ class LoginActivity: Activity() {
         }
         else
             Toast.makeText(this,"Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+    }
+    fun validarFirebase(){
+        val correo = binding.loginNombreUsuario.text.toString()
+        val password = binding.loginIngresarContrasenha.text.toString()
+
+        firebaseAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(){
+                task ->
+            if (task.isSuccessful){
+                val user = firebaseAuth.currentUser
+
+            }else{
+
+            }
+        }
     }
 }
