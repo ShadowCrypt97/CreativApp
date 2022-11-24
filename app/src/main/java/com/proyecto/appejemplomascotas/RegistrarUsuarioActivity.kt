@@ -1,22 +1,15 @@
 package com.proyecto.appejemplomascotas
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
-import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseCommonRegistrar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarUsuarioBinding
 import kotlinx.coroutines.launch
 
@@ -32,6 +25,9 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
         val adaptador:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoDoc)
         binding = ActivityRegistrarUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth = Firebase.auth
+
         adaptador.setDropDownViewResource(R.layout.spinner_dropdown_item)
         campoTipoId = binding.dropdown
         campoTipoId.adapter = adaptador
@@ -109,7 +105,7 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
                 task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,RegistrarMascotaActivity::class.java))
+                    startActivity(Intent(this,LoginActivity::class.java))
                 }else
                     Toast.makeText(this,"Error al registrarse",Toast.LENGTH_SHORT).show()
             }

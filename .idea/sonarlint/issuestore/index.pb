@@ -9,12 +9,8 @@ Dapp/src/test/java/com/proyecto/appejemplomascotas/ExampleUnitTest.kt,b\2\b2190
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-~
-Napp/src/main/java/com/proyecto/appejemplomascotas/RecuperarPasswordActivity.kt,3\a\3a7f0b25f515fa45de3c4bf48ac947192192bc6d
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 y
 Iapp/src/main/java/com/proyecto/appejemplomascotas/AgendarBathsFragment.kt,0\3\03a86d445efb02d1b67fe60a0c6261c89b9265ff
 t

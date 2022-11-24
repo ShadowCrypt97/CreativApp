@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityLoginBinding
 
 class LoginActivity: Activity() {
@@ -24,6 +26,9 @@ class LoginActivity: Activity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_login)
         setContentView(binding.root)
+
+        firebaseAuth = Firebase.auth
+
         link_recover_pass = binding.recuperarContrasenha
         btn_registro = binding.btnRegistro
         btn_login = binding.btnLogin
@@ -31,7 +36,7 @@ class LoginActivity: Activity() {
             startActivity(Intent(this,RegistrarUsuarioActivity::class.java))
         }
         btn_login.setOnClickListener{
-            //iniciarSesion()
+            //validarMemoria()
             validarFirebase()
         }
         link_recover_pass.setOnClickListener{
@@ -40,7 +45,7 @@ class LoginActivity: Activity() {
 
     }
 
-    fun iniciarSesion(){
+    fun validarMemoria(){
 
         val usuario:String = binding.loginNombreUsuario.text.toString()
         val password:String = binding.loginIngresarContrasenha.text.toString()
@@ -60,14 +65,22 @@ class LoginActivity: Activity() {
     fun validarFirebase(){
         val correo = binding.loginNombreUsuario.text.toString()
         val password = binding.loginIngresarContrasenha.text.toString()
-
-        firebaseAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(){
+        if(correo.isEmpty()){
+            Toast.makeText(this,"Ingrese su correo electrónico", Toast.LENGTH_SHORT).show()
+        }else if(password.isEmpty()){
+            Toast.makeText(this,"Ingrese su contraseña", Toast.LENGTH_SHORT).show()
+        }else{
+            firebaseAuth.signInWithEmailAndPassword(correo,password).addOnCompleteListener(this){
                 task ->
-            if (task.isSuccessful){
-                val user = firebaseAuth.currentUser
-
-            }else{
-
+                    if (task.isSuccessful){
+                        val user = firebaseAuth.currentUser
+                        if(user != null){
+                            Toast.makeText(this,"Bienvenido ${user.email}", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this,HomeActivity::class.java))
+                        }
+                    }else{
+                        Toast.makeText(this,"Correo y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                    }
             }
         }
     }

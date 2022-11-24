@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 
 class RegistrarMascotaActivity: Activity() {
@@ -15,6 +18,7 @@ class RegistrarMascotaActivity: Activity() {
     lateinit var btn_registro_mascota:Button
     lateinit var campoTipoMascota: Spinner
     lateinit var campoTipoBanho:Spinner
+    lateinit var firebaseAuth: FirebaseAuth
     var banderaTipoMascota:Boolean = true
     var banderaTipoBanho:Boolean = true
 
@@ -25,7 +29,9 @@ class RegistrarMascotaActivity: Activity() {
         val listaTipoBanho = arrayOf("Seleccione tipo de baño", "Medicado", "Completo", "Antipulgas")
         val adaptadorMascota: ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoMascota)
         val adaptadorTipoBanho:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_items,listaTipoBanho)
-        val email = intent.getStringExtra("email")
+        firebaseAuth = Firebase.auth
+        val email = firebaseAuth.currentUser?.email.toString()
+        //val email = intent.getStringExtra("email")
         Toast.makeText(this,"Bienvenido $email", Toast.LENGTH_SHORT).show()
 
         binding = ActivityRegistrarMascotaBinding.inflate(layoutInflater)

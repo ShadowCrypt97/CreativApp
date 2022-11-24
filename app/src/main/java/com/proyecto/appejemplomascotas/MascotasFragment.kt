@@ -30,10 +30,10 @@ class MascotasFragment : Fragment(R.layout.fragment_mascotas) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val intent = Intent(context,RegistrarMascotaActivity::class.java)
-        if(arguments != null){
+        /*if(arguments != null){
             val email = requireArguments().getString("email")
             intent.putExtra("email",email)
-        }
+        }*/
         fab = binding.buttonAgregar
         fab!!.setOnClickListener {
             startActivity(intent)
