@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_nativ_app_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppEjemploMascotas">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -45,6 +45,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:theme="@style/Theme.AppEjemploMascotas"
             android:name=".HomeActivity"
             android:exported="false">
             <meta-data

@@ -57,15 +57,19 @@ class RegistrarMascotaActivity: Activity() {
                     banderaTipoBanho = false
                 }
             }
-            registrarMascota(banderaTipoMascota,banderaTipoBanho)
+            if (email != null) {
+                registrarMascota(banderaTipoMascota,banderaTipoBanho,email)
+            }else{
+                Toast.makeText(this,"No existe el email asociado a la cuenta", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    fun registrarMascota(b1:Boolean, b2:Boolean){
+    fun registrarMascota(b1:Boolean, b2:Boolean, email:String){
         val nombreMascota:String = binding.nombreMascota.text.toString()
         val edad:Int = Integer.parseInt(binding.edadMascota.text.toString())
 
-        val preferences = getSharedPreferences(nombreMascota, Context.MODE_PRIVATE)
+        val preferences = getSharedPreferences("${nombreMascota}_${email}", Context.MODE_PRIVATE)
         val editar = preferences.edit()
 
         editar.putString("nombreMascota", nombreMascota)
