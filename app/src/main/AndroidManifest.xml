@@ -9,10 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".DetalleVeterinarioActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,15 +53,13 @@
                 android:value="" />
         </activity>
         <activity
-            android:theme="@style/Theme.AppEjemploMascotas"
             android:name=".HomeActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppEjemploMascotas">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
 
         <meta-data
             android:name="preloaded_fonts"

@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>):RecyclerView.Adapter<RecyclerVeterinarioAdapter.MiHolder>(){
+class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>,private val itemClickListener: ClickVeterinario):RecyclerView.Adapter<RecyclerVeterinarioAdapter.MiHolder>(){
 
+    interface ClickVeterinario{
+        fun onItemClick(veterinario: Veterinario)
+    }
     inner class MiHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         var nombres:TextView
         var telefono:TextView
@@ -42,7 +45,10 @@ class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>)
             .with(holder.itemView)
             .load(veterinario.foto)
             .into(holder.foto)
-        //holder.foto.setImageResource(veterinario.foto)
+
+        holder.itemView.setOnClickListener{
+            itemClickListener.onItemClick(veterinario)
+        }
     }
 
     override fun getItemCount(): Int {
