@@ -15,9 +15,13 @@ y
 Iapp/src/main/java/com/proyecto/appejemplomascotas/AgendarBathsFragment.kt,0\3\03a86d445efb02d1b67fe60a0c6261c89b9265ff
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 t
 Dapp/src/main/java/com/proyecto/appejemplomascotas/MyBathsFragment.kt,2\1\21a76cc017dc508c977a5aa436782bf7bdb47a57
 q
 Aapp/src/main/java/com/proyecto/appejemplomascotas/MainActivity.kt,a\f\af34f4c88ba66fa80ef85803a2463711adb13cfb
+}
+Mapp/src/main/java/com/proyecto/appejemplomascotas/RegistrarMascotaActivity.kt,b\c\bcba072ac1752515114cf2057e3aa185d4d5551c
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
