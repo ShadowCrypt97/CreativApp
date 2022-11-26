@@ -27,7 +27,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="40dp"
         android:clickable="true"
-        android:src="@drawable/ic_agregar_mascota"
+        android:src="@drawable/agregar"
         app:borderWidth="5dp"
         app:elevation="10dp"
         app:fabSize="auto" />

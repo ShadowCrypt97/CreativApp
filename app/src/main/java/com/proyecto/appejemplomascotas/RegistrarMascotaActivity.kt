@@ -106,13 +106,14 @@ class RegistrarMascotaActivity: AppCompatActivity() {
         val dir=getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         file = File.createTempFile("Foto_${System.currentTimeMillis()}_",".jpg",dir)
     }
+
     fun registrarMascotaFirebase(b1:Boolean, b2:Boolean){
         val id = firebaseAuth.currentUser?.uid.toString()
         val idMascota:String =  id+"_"+binding.nombreMascota.text.toString()
         val nombreMascota:String = binding.nombreMascota.text.toString()
         val edad:String = binding.edadMascota.text.toString()
         val tipoMascota:String = campoTipoMascota.selectedItem.toString()
-        val fotoUrl:String = R.drawable.mascotas.toString()
+        val fotoUrl:String = file.toString()
         val data = hashMapOf<String,String>(
             "nombre" to nombreMascota,
             "edad" to edad,
