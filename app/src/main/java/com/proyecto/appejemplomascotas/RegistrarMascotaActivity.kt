@@ -77,6 +77,9 @@ class RegistrarMascotaActivity: Activity() {
             startActivity(Intent(this,LoginActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
+
+            binding.tomarfoto.setOnClickListener {  }
+
         }
     }
 }

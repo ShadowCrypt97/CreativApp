@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_dark"
+    android:background="@color/purple_200"
     tools:context=".MascotasFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -35,5 +35,17 @@
         app:borderWidth="5dp"
         app:elevation="10dp"
         app:fabSize="auto" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="355dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:src="@drawable/agregar"
+        app:backgroundTint="#00BCD4" />
 
 </RelativeLayout>

@@ -8,6 +8,18 @@
         android:roundIcon="@mipmap/ic_nativ_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppEjemploMascotas">
+        
+        <provider
+            android:authorities="${applicationid}.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE-PROVIDER-PATHS"
+                android:resource="@xml/file_paths"
+                />
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
