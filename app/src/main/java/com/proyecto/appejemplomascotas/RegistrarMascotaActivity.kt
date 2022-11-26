@@ -1,10 +1,12 @@
 package com.proyecto.appejemplomascotas
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
@@ -146,6 +148,11 @@ class RegistrarMascotaActivity: AppCompatActivity() {
             startActivity(Intent(this,HomeActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
+
+            binding.tomarfoto.setOnClickListener {
+
         }
     }
+    val abrirCamara =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
 }
