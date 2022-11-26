@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarUsuarioBinding
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
     lateinit var btn_registro:Button
     lateinit var campoTipoId:Spinner
     lateinit var firebaseAuth:FirebaseAuth
+    lateinit var firestoreBD:FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val listaTipoDoc = arrayOf("Seleccione tipo de documento", "Cédula", "Tarjeta de identidad", "NIT", "Pasaporte")
@@ -28,6 +30,7 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
         setContentView(binding.root)
 
         firebaseAuth = Firebase.auth
+        firestoreBD = FirebaseFirestore.getInstance()//permite hacer la conexion con la BD de firestore
 
         adaptador.setDropDownViewResource(R.layout.spinner_dropdown_item)
         campoTipoId = binding.dropdown
@@ -93,18 +96,59 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
     }
 
     fun registrarFirebase(){
+        val nombre:String = binding.nombreUsuario.text.toString()
+        val apellido:String = binding.apellidoUsuario.text.toString()
+        val numDoc:String = binding.numID.text.toString()
+        val celular:String = binding.numCel.text.toString()
+        var tipoDoc:String = campoTipoId.selectedItem.toString()
         val email:String = binding.email.text.toString()
         val contrasenha:String = binding.registroPassword.text.toString()
+        var id:String
+
+        campoTipoId.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
+                if(position>0){
+                    tipoDoc = campoTipoId.selectedItem.toString()
+                    //editar.putString("tipoDocumento", campoTipoId.selectedItem.toString())
+                }else{
+                    Toast.makeText(this@RegistrarUsuarioActivity,"No has seleccionado el tipo de documento",Toast.LENGTH_SHORT).show()
+                    tipoDoc = ""
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(this@RegistrarUsuarioActivity,"No has seleccionado el tipo de documento",Toast.LENGTH_SHORT).show()
+            }
+        }
         if(email.isEmpty()){
             Toast.makeText(this,"Ingrese su correo electrónico",Toast.LENGTH_SHORT).show()
         }else if (contrasenha.isEmpty()){
             Toast.makeText(this,"Ingrese su contraseña",Toast.LENGTH_SHORT).show()
-        }else
+        }else if (nombre.isEmpty() || apellido.isEmpty() || numDoc.isEmpty() || celular.isEmpty() || tipoDoc.isEmpty()){
+            Toast.makeText(this,"Complete los datos",Toast.LENGTH_SHORT).show()
+        }
+        else
             firebaseAuth.createUserWithEmailAndPassword(email,contrasenha).addOnCompleteListener{
                 task ->
                 if (task.isSuccessful){
-                    Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,LoginActivity::class.java))
+                    id = firebaseAuth.currentUser?.uid.toString()
+                    val data = hashMapOf<String,String>(
+                        "nombre" to nombre,
+                        "apellido" to apellido,
+                        "tipoDoc" to tipoDoc,
+                        "numDoc" to numDoc,
+                        "email" to email,
+                        "password" to contrasenha
+                    )
+                    //firestoreBD.collection("Usuarios/$id/Mascotas").document("${id}_$nombre").set(data)
+                    firestoreBD.collection("Usuarios").document(id).set(data).addOnCompleteListener{
+                        task ->
+                        Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this,LoginActivity::class.java))
+                    }.addOnFailureListener{
+                        error ->
+                        Toast.makeText(this,"Error al registrarse",Toast.LENGTH_SHORT).show()
+                    }
                 }else
                     Toast.makeText(this,"Error al registrarse",Toast.LENGTH_SHORT).show()
             }

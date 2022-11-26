@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>):RecyclerView.Adapter<RecyclerVeterinarioAdapter.MiHolder>(){
 
@@ -20,6 +22,9 @@ class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>)
             ciudad = itemView.findViewById(R.id.ciudad_veterinario)
             telefono = itemView.findViewById(R.id.celular_veterinario)
             foto = itemView.findViewById(R.id.foto_veterinario)
+            itemView.setOnClickListener{
+                Toast.makeText(itemView.context,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -33,7 +38,11 @@ class RecyclerVeterinarioAdapter(var listaVeterinarios:MutableList<Veterinario>)
         holder.nombres.text = veterinario.nombre
         holder.telefono.text = veterinario.telefono
         holder.ciudad.text = veterinario.ciudad
-        holder.foto.setImageResource(veterinario.foto)
+        Glide
+            .with(holder.itemView)
+            .load(veterinario.foto)
+            .into(holder.foto)
+        //holder.foto.setImageResource(veterinario.foto)
     }
 
     override fun getItemCount(): Int {

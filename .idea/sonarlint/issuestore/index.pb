@@ -21,7 +21,3 @@ t
 Dapp/src/main/java/com/proyecto/appejemplomascotas/MyBathsFragment.kt,2\1\21a76cc017dc508c977a5aa436782bf7bdb47a57
 q
 Aapp/src/main/java/com/proyecto/appejemplomascotas/MainActivity.kt,a\f\af34f4c88ba66fa80ef85803a2463711adb13cfb
-{
-Kapp/src/main/java/com/proyecto/appejemplomascotas/RecyclerMascotaAdapter.kt,7\a\7a2c830894c611fe47ad850bef4bd1ada8c3b097
-
-Oapp/src/main/java/com/proyecto/appejemplomascotas/RecyclerVeterinarioAdapter.kt,5\c\5c06cb967ce19a26df7d86e6e2dadd8f62163aa4

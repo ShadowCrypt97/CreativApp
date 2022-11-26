@@ -11,9 +11,9 @@ class MascotaEntity {
     var nombre:String
     var tipoMascota:String
     var edad:String
-    var fotoUrl:Int
+    var fotoUrl:String
 
-    constructor(id: String, nombre: String, tipoMascota: String, edad: String, fotoUrl: Int) {
+    constructor(id: String, nombre: String, tipoMascota: String, edad: String, fotoUrl: String) {
         this.id = id
         this.nombre = nombre
         this.tipoMascota = tipoMascota

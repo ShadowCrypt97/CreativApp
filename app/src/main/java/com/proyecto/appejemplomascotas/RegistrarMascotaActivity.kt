@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 import kotlinx.coroutines.launch
@@ -23,6 +24,8 @@ class RegistrarMascotaActivity: AppCompatActivity() {
     lateinit var firebaseAuth: FirebaseAuth
     var banderaTipoMascota:Boolean = true
     var banderaTipoBanho:Boolean = true
+    lateinit var firestoreBD:FirebaseFirestore
+
 
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -38,6 +41,10 @@ class RegistrarMascotaActivity: AppCompatActivity() {
 
         binding = ActivityRegistrarMascotaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth = Firebase.auth
+        firestoreBD = FirebaseFirestore.getInstance()//permite hacer la conexion con la BD de firestore
+
         adaptadorMascota.setDropDownViewResource(R.layout.spinner_dropdown_item)
         adaptadorTipoBanho.setDropDownViewResource(R.layout.spinner_dropdown_item)
         campoTipoMascota = binding.dropdownTipoMascota
@@ -65,11 +72,36 @@ class RegistrarMascotaActivity: AppCompatActivity() {
                     banderaTipoBanho = false
                 }
             }
-            registrarMascotaRoom(banderaTipoMascota,banderaTipoBanho,email)
+            registrarMascotaFirebase(banderaTipoMascota,banderaTipoBanho)
         }
     }
 
-
+    fun registrarMascotaFirebase(b1:Boolean, b2:Boolean){
+        val id = firebaseAuth.currentUser?.uid.toString()
+        val idMascota:String =  id+"_"+binding.nombreMascota.text.toString()
+        val nombreMascota:String = binding.nombreMascota.text.toString()
+        val edad:String = binding.edadMascota.text.toString()
+        val tipoMascota:String = campoTipoMascota.selectedItem.toString()
+        val fotoUrl:String = R.drawable.mascotas.toString()
+        val data = hashMapOf<String,String>(
+            "nombre" to nombreMascota,
+            "edad" to edad,
+            "tipoMascota" to tipoMascota,
+            "fotoUrl" to fotoUrl
+        )
+        if(nombreMascota.isNotEmpty() && b1 && b2)
+            firestoreBD.collection("Usuarios/$id/Mascotas").document(idMascota).set(data).addOnSuccessListener{
+                    task ->
+                Toast.makeText(this,"Mascota registrada exitosamente.",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,HomeActivity::class.java))
+            }.addOnFailureListener{
+                    error ->
+                Toast.makeText(this,"Error al registrarse",Toast.LENGTH_SHORT).show()
+            }
+        else{
+            Toast.makeText(this,"Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     fun registrarMascotaRoom(b1:Boolean, b2:Boolean, email: String){
         val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBDPets").build()
@@ -77,7 +109,7 @@ class RegistrarMascotaActivity: AppCompatActivity() {
         val nombreMascota:String = binding.nombreMascota.text.toString()
         val edad:String = binding.edadMascota.text.toString()
         val tipoMascota:String = campoTipoMascota.selectedItem.toString()
-        val fotoUrl:Int = R.drawable.mascotas
+        val fotoUrl:String = R.drawable.mascotas.toString()
         val mascota = MascotaEntity(id,nombreMascota,tipoMascota,edad,fotoUrl)
 
         if(nombreMascota.isNotEmpty() && b1 && b2){

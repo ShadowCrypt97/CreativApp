@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class RecyclerMascotaAdapter(var listaMascotas:MutableList<Mascota>): RecyclerView.Adapter<RecyclerMascotaAdapter.MiHolder>(){
 
@@ -30,10 +31,14 @@ class RecyclerMascotaAdapter(var listaMascotas:MutableList<Mascota>): RecyclerVi
 
     override fun onBindViewHolder(holder: MiHolder, position: Int) {
         var mascota = listaMascotas[position]
-        holder.nombre.text = mascota.nombre
-        holder.tipoMascota.text = mascota.tipoMascota
-        holder.edad.text = mascota.edad.toString()
-        holder.foto.setImageResource(mascota.foto)
+        holder.nombre.text = "Nombre mascota: ${mascota.nombre}"
+        holder.tipoMascota.text = "Tipo mascota: ${mascota.tipoMascota}"
+        holder.edad.text = "Edad mascota: ${mascota.edad}"
+        //holder.foto.setImageResource(mascota.foto)
+        Glide
+            .with(holder.itemView)
+            .load(mascota.foto)
+            .into(holder.foto)
     }
 
     override fun getItemCount(): Int {
