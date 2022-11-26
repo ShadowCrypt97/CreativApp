@@ -1,13 +1,17 @@
 package com.proyecto.appejemplomascotas
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
@@ -16,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 import kotlinx.coroutines.launch
+import java.io.File
 
 class RegistrarMascotaActivity: AppCompatActivity() {
 
@@ -76,8 +81,31 @@ class RegistrarMascotaActivity: AppCompatActivity() {
             }
             registrarMascotaFirebase(banderaTipoMascota,banderaTipoBanho)
         }
+        binding.tomarfoto.setOnClickListener{
+        //abrirCamara.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).also {
+                crearArchivo()
+                val fotoUri= FileProvider.getUriForFile(this,BuildConfig.APPLICATION_ID+".fileProvider",file)
+                it.putExtra(MediaStore.EXTRA_OUTPUT,fotoUri)
+            }
+            abrirCamara.launch(intent)
+        }
     }
 
+    val abrirCamara =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data = result.data!!
+              //  val bitmap = data.extras?.get("data") as Bitmap
+                val bitmap = BitmapFactory.decodeFile(file.toString())
+                binding.foto.setImageBitmap(bitmap)
+            }
+        }
+    private lateinit var file: File
+    private fun crearArchivo(){
+        val dir=getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        file = File.createTempFile("Foto_${System.currentTimeMillis()}_",".jpg",dir)
+    }
     fun registrarMascotaFirebase(b1:Boolean, b2:Boolean){
         val id = firebaseAuth.currentUser?.uid.toString()
         val idMascota:String =  id+"_"+binding.nombreMascota.text.toString()
@@ -104,6 +132,7 @@ class RegistrarMascotaActivity: AppCompatActivity() {
             Toast.makeText(this,"Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     fun registrarMascotaRoom(b1:Boolean, b2:Boolean, email: String){
         val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBDPets").build()
@@ -148,11 +177,6 @@ class RegistrarMascotaActivity: AppCompatActivity() {
             startActivity(Intent(this,HomeActivity::class.java))
         }else{
             Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
-
-            binding.tomarfoto.setOnClickListener {
-
         }
     }
-    val abrirCamara =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
 }
