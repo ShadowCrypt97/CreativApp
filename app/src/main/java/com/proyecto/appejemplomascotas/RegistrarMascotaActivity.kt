@@ -1,18 +1,20 @@
 package com.proyecto.appejemplomascotas
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
+import kotlinx.coroutines.launch
 
-class RegistrarMascotaActivity: Activity() {
+class RegistrarMascotaActivity: AppCompatActivity() {
 
     lateinit var binding: ActivityRegistrarMascotaBinding
     lateinit var btn_registro_mascota:Button
@@ -63,14 +65,36 @@ class RegistrarMascotaActivity: Activity() {
                     banderaTipoBanho = false
                 }
             }
-            if (email != null) {
-                registrarMascota(banderaTipoMascota,banderaTipoBanho,email)
-            }else{
-                Toast.makeText(this,"No existe el email asociado a la cuenta", Toast.LENGTH_SHORT).show()
-            }
+            registrarMascotaRoom(banderaTipoMascota,banderaTipoBanho,email)
         }
     }
 
+
+
+    fun registrarMascotaRoom(b1:Boolean, b2:Boolean, email: String){
+        val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBDPets").build()
+        val id:String =  email+"_"+binding.nombreMascota.text.toString()
+        val nombreMascota:String = binding.nombreMascota.text.toString()
+        val edad:String = binding.edadMascota.text.toString()
+        val tipoMascota:String = campoTipoMascota.selectedItem.toString()
+        val fotoUrl:Int = R.drawable.mascotas
+        val mascota = MascotaEntity(id,nombreMascota,tipoMascota,edad,fotoUrl)
+
+        if(nombreMascota.isNotEmpty() && b1 && b2){
+            lifecycleScope.launch{
+                room.daoMascota().almacenarMascota(mascota)
+                val lista = room.daoMascota().getMascotas()
+                for (pet in lista){
+                    println("############ ---- ${pet.id} --- ${pet.nombre} ----${pet.tipoMascota} ${pet.edad} ---- ${pet.fotoUrl} ##################")
+                }
+            }
+            Toast.makeText(this,"Mascota registrada exitosamente", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,HomeActivity::class.java))
+        }else{
+            Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
+        }
+
+    }
     fun registrarMascota(b1:Boolean, b2:Boolean, email:String){
         val nombreMascota:String = binding.nombreMascota.text.toString()
         val edad:Int = Integer.parseInt(binding.edadMascota.text.toString())
@@ -80,7 +104,7 @@ class RegistrarMascotaActivity: Activity() {
 
         editar.putString("nombreMascota", nombreMascota)
         editar.putString("tipoMascota", campoTipoMascota.selectedItem.toString())
-        editar.putString("tipoBanho", campoTipoMascota.selectedItem.toString())
+        editar.putString("tipoBanho", campoTipoBanho.selectedItem.toString())
         editar.putInt("edad", edad)
 
 

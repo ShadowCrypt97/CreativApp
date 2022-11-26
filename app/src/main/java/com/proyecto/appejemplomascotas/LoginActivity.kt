@@ -7,12 +7,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.proyecto.appejemplomascotas.databinding.ActivityLoginBinding
+import kotlinx.coroutines.launch
 
-class LoginActivity: Activity() {
+class LoginActivity: AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding //Manejar los elementos de la vista
     lateinit var btn_registro:Button
@@ -38,11 +42,32 @@ class LoginActivity: Activity() {
         btn_login.setOnClickListener{
             //validarMemoria()
             validarFirebase()
+            //validarRoom()
         }
         link_recover_pass.setOnClickListener{
             startActivity(Intent(this,RecuperarPasswordActivity::class.java))
         }
 
+    }
+
+    fun validarRoom(){
+        val usuario:String = binding.loginNombreUsuario.text.toString()
+        val password:String = binding.loginIngresarContrasenha.text.toString()
+        val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBDUsers").build()
+
+        lifecycleScope.launch{
+            val emailAlmacenado:String = room.daoUsuario().getUsuario(usuario).email
+            val passwordAlmacenada:String = room.daoUsuario().getUsuario(usuario).password
+            println("email: $emailAlmacenado")
+            println("password: $passwordAlmacenada")
+            if (emailAlmacenado == usuario && passwordAlmacenada == password) {
+                val intent = Intent(applicationContext,HomeActivity::class.java)
+                //intent.putExtra("email",usuario)
+                startActivity(intent)
+            }
+            else
+                Toast.makeText(applicationContext,"Usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun validarMemoria(){

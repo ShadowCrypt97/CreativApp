@@ -15,7 +15,6 @@ class VeterinariosFragment: Fragment(R.layout.fragment_veterinarios) {
     private var _binding: FragmentVeterinariosBinding? = null
     private val binding get() = _binding!!
     private var lista:MutableList<Veterinario> = mutableListOf()
-    private lateinit var recycler: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

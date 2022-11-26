@@ -1,5 +1,6 @@
 package com.proyecto.appejemplomascotas
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -46,7 +47,10 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
         val celular:String = binding.numCel.text.toString()
         val contrasenha:String = binding.registroPassword.text.toString()
         var tipoDoc:String = campoTipoId.selectedItem.toString()
-        val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBD").build()
+        val room = Room.databaseBuilder(this,bdUsuarios::class.java,"NativAppBDUsers").build()
+
+        //val preferences = getSharedPreferences(email, Context.MODE_PRIVATE)
+        //val editar = preferences.edit()
 
         campoTipoId.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
@@ -61,20 +65,7 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
                 Toast.makeText(this@RegistrarUsuarioActivity,"No has seleccionado el tipo de documento",Toast.LENGTH_SHORT).show()
             }
         }
-        val usuario = UsuarioEntidad(email,nombre,apellido, celular,tipoDoc,numDoc,contrasenha)
-
-        lifecycleScope.launch{
-            room.daoUsuario().almacenarUsuario(usuario)
-            var lista = room.daoUsuario().getUsuarios()
-            for (user in lista){
-                println("############ ---- ${user.email} --- ${user.nombre} ----${user.tipoDoc} ${user.numeroDoc} ---- ##################")
-            }
-        }
-
         /*
-        val preferences = getSharedPreferences(email, Context.MODE_PRIVATE)
-        val editar = preferences.edit()
-
         editar.putString("nombre", nombre)
         editar.putString("apellido", apellido)
         editar.putString("email", email)
@@ -85,6 +76,14 @@ class RegistrarUsuarioActivity: AppCompatActivity(){
 
 
         if(email.isNotEmpty() && contrasenha.isNotEmpty()){
+            val usuario = UsuarioEntidad(email,nombre,apellido, celular,tipoDoc,numDoc,contrasenha)
+            lifecycleScope.launch{
+                room.daoUsuario().almacenarUsuario(usuario)
+                val lista = room.daoUsuario().getUsuarios()
+                for (user in lista){
+                    println("############ ---- ${user.email} --- ${user.nombre} ----${user.tipoDoc} ${user.numeroDoc} ---- ${user.password} ##################")
+                }
+            }
             Toast.makeText(this,"Usuario registrado exitosamente",Toast.LENGTH_SHORT).show()
             //editar.apply()
             startActivity(Intent(this,LoginActivity::class.java))
