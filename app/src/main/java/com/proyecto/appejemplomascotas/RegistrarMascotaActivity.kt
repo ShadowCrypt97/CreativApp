@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.proyecto.appejemplomascotas.databinding.ActivityRegistrarMascotaBinding
 
@@ -78,8 +79,10 @@ class RegistrarMascotaActivity: Activity() {
         }else{
             Toast.makeText(this," Favor completar campos obligatorios", Toast.LENGTH_SHORT).show()
 
-            binding.tomarfoto.setOnClickListener {  }
+            binding.tomarfoto.setOnClickListener {
 
         }
     }
+    val abrirCamara =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { }
 }
