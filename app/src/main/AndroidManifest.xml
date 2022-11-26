@@ -8,7 +8,7 @@
         android:roundIcon="@mipmap/ic_nativ_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppEjemploMascotas">
-        
+
         <provider
             android:authorities="${applicationid}.fileprovider"
             android:name="androidx.core.content.FileProvider"
@@ -20,6 +20,23 @@
                 />
         </provider>
 
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+        <activity
+            android:name=".DetalleVeterinarioActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -58,13 +75,12 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppEjemploMascotas">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
 
         <meta-data
             android:name="preloaded_fonts"

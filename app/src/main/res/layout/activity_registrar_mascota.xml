@@ -195,7 +195,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_toStartOf="@+id/button"
+            android:layout_toStartOf="@+id/tomarfoto"
             android:src="@android:drawable/ic_menu_gallery" />
 
 
